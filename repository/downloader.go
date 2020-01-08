@@ -11,6 +11,8 @@ import (
 	"time"
 )
 
+
+// All the information about a specific download request
 type DownloadInformation struct {
 	ID            string
 	StartTime     time.Time
@@ -47,6 +49,7 @@ func New(request DownloadRequest) *DownloadInformation {
 	return information
 }
 
+// To begin download process
 func (information DownloadInformation) Download() {
 
 	information.markDownloadStart()
@@ -59,6 +62,7 @@ func (information DownloadInformation) Download() {
 
 }
 
+// Downloads files serially
 func (information DownloadInformation) serialDownloader() {
 
 	for _, url := range information.URLs {
@@ -75,6 +79,7 @@ func (information DownloadInformation) serialDownloader() {
 	information.markDownloadEnd(SUCCESS)
 }
 
+// Download Files in a concurrengt manner.
 func (information DownloadInformation) concurrentDownloader() {
 
 	var wg sync.WaitGroup
@@ -89,7 +94,6 @@ func (information DownloadInformation) concurrentDownloader() {
 	information.markDownloadEnd(SUCCESS)
 }
 
-// Handles Concurrent Download Requests
 func (information DownloadInformation) concurrentDownloadHandler(url string, wg *sync.WaitGroup) {
 
 	filePath := information.DirectoryPath + getFileNameFromURL(url)
@@ -103,4 +107,30 @@ func (information DownloadInformation) concurrentDownloadHandler(url string, wg 
 	}
 
 	information.appendDownloadFile(url, filePath)
-}
+// }
+// <<<<<<< patch-5
+
+// // Downloads a specific File.
+// func downloadFile(url string, filePath string) error {
+
+// 	out, err := os.Create(filePath)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	defer out.Close()
+
+// 	resp, err := http.Get(url)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	defer resp.Body.Close()
+
+// 	_, err = io.Copy(out, resp.Body)
+// 	if err != nil {
+// 		return err
+// 	}
+
+// 	return nil
+// }
+// =======
+// >>>>>>> master
