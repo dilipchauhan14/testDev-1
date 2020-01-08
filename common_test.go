@@ -1,4 +1,5 @@
 // *test* author : Sammarth
+// Adding comment in 2nd line
 package main
 
 import (
