@@ -42,5 +42,3 @@ func appendFileForGivenID(id, url, filePath string) {
 
 	downloadCollection[id].Files[url] = filePath
 }
-
-// EOF
