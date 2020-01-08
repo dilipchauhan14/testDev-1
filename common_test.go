@@ -1,3 +1,4 @@
+// *test* author : Sammarth
 package main
 
 import (
@@ -27,7 +28,6 @@ func testHTTPResponse(t *testing.T, r *gin.Engine, req *http.Request, f func(w *
 	// Create a response recorder
 	w := httptest.NewRecorder()
 
-	// Create the service and process the above request.
 	r.ServeHTTP(w, req)
 
 	if !f(w) {
@@ -36,7 +36,6 @@ func testHTTPResponse(t *testing.T, r *gin.Engine, req *http.Request, f func(w *
 	return w
 }
 
-// To check if some pattern is present in given body
 func testIsPresentInResponse(body, matchingPattern string) bool {
 
 	if strings.Compare(body, matchingPattern) >= 0 {
@@ -44,3 +43,8 @@ func testIsPresentInResponse(body, matchingPattern string) bool {
 	}
 	return false
 }
+
+//rhjghjbvdjknb
+//gjkndjnbjdb
+//bjkdjknbg
+//bjkngbjnkdgb
