@@ -43,8 +43,3 @@ func testIsPresentInResponse(body, matchingPattern string) bool {
 	}
 	return false
 }
-
-//rhjghjbvdjknb
-//gjkndjnbjdb
-//bjkdjknbg
-//bjkngbjnkdgb
