@@ -12,3 +12,6 @@ func main() {
 
 	router.Run(":8081")
 }
+
+
+// Adding footer

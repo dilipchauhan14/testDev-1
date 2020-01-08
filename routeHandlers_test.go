@@ -120,3 +120,5 @@ func testGetIDForDownloadRequest(downloadRequest repository.DownloadRequest) str
 
 	return response.ID
 }
+
+// Adding footer
