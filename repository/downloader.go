@@ -104,25 +104,3 @@ func (information DownloadInformation) concurrentDownloadHandler(url string, wg 
 
 	information.appendDownloadFile(url, filePath)
 }
-
-func downloadFile(url string, filePath string) error {
-
-	out, err := os.Create(filePath)
-	if err != nil {
-		return err
-	}
-	defer out.Close()
-
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-
-	_, err = io.Copy(out, resp.Body)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
